@@ -23,8 +23,9 @@ A modern, extensible web application for comparing database schemas between loca
 
 ## Screenshots
 
-<!-- Add screenshots here -->
-_Screenshots coming soon..._
+![Database Schema Comparison Tool](screenshot.png)
+
+*Schema comparison interface showing synchronized navigation and visual diff indicators*
 
 ## Quick Start
 

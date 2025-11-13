@@ -41,8 +41,8 @@ _Screenshots coming soon..._
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/database-compare.git
-   cd database-compare
+   git clone https://github.com/fatihemre/database-schema-diff.git
+   cd database-schema-diff
    ```
 
 2. **Create configuration file**
@@ -237,7 +237,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 
 ### Reporting Vulnerabilities
 
-If you discover a security vulnerability, please send an email to [your-email@example.com]. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please send an email to [info@fatihemre.net](mailto:info@fatihemre.net). All security vulnerabilities will be promptly addressed.
 
 ### Best Practices
 
@@ -257,9 +257,9 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Support
 
-- 📫 Email: [your-email@example.com]
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/database-compare/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/database-compare/discussions)
+- 📫 Email: [info@fatihemre.net](mailto:info@fatihemre.net)
+- 🐛 Issues: [GitHub Issues](https://github.com/fatihemre/database-schema-diff/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/fatihemre/database-schema-diff/discussions)
 
 ## Roadmap
 
@@ -291,7 +291,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Authors
 
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+- **Fatih Emre** - *Initial work* - [fatihemre](https://github.com/fatihemre)
 
 ## Changelog
 

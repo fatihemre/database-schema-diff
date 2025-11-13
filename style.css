@@ -1,0 +1,279 @@
+/**
+ * Database Comparison - UIKit Minimal Styles
+ */
+
+:root {
+    --uk-danger: #f0506e;
+    --uk-success: #32d296;
+    --uk-warning: #faa05a;
+}
+
+body {
+    background-color: #f8f8f8;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666;
+}
+
+/* Database Column Headers */
+.column-header {
+    background: #fff;
+    color: #666;
+    padding: 14px 18px;
+    border-radius: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+.column-header .hostname {
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+}
+
+/* Schema Items */
+.schema-item {
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: white;
+    border: 1px solid #e5e5e5;
+}
+
+.schema-header-custom {
+    background: #fafafa;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+}
+
+.schema-header-custom:hover {
+    background: #f5f5f5;
+}
+
+.schema-header-custom.schema-diff {
+    background: #fff5f7;
+    color: var(--uk-danger);
+    border-left: 3px solid var(--uk-danger);
+}
+
+.schema-header-custom.schema-diff:hover {
+    background: #fff0f3;
+}
+
+.schema-icon {
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.schema-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+.schema-count {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 3px 10px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+}
+
+.schema-status {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.schema-status.status-ok {
+    color: var(--uk-success);
+}
+
+.schema-status.status-error {
+    color: var(--uk-danger);
+}
+
+.schema-content-custom {
+    padding: 10px;
+    background: #fafafa;
+    display: none;
+}
+
+.schema-content-custom.uk-open {
+    display: block;
+}
+
+/* Table Cards */
+.table-card {
+    margin-bottom: 8px;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    background: white;
+}
+
+.table-card.missing-table {
+    border-color: #ffc1cc;
+    background: #fff;
+}
+
+.table-card.extra-table {
+    border-color: #b8e6d5;
+    background: #fff;
+}
+
+.table-card.diff-table {
+    border-color: #ffd89b;
+    background: #fff;
+}
+
+.table-card-header {
+    background: #fafafa;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.table-card.missing-table .table-card-header {
+    background: #fff;
+    color: var(--uk-danger);
+    border-bottom-color: #ffc1cc;
+}
+
+.table-card.extra-table .table-card-header {
+    background: #fff;
+    color: var(--uk-success);
+    border-bottom-color: #b8e6d5;
+}
+
+.table-card.diff-table .table-card-header {
+    background: #fff;
+    color: #e28327;
+    border-bottom-color: #ffd89b;
+}
+
+.table-card-body {
+    padding: 6px;
+}
+
+/* Column Items */
+.column-item {
+    padding: 5px 8px;
+    border-radius: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.column-item:last-child {
+    border-bottom: none;
+}
+
+.column-item:hover {
+    background: #fafafa;
+}
+
+.column-item.missing {
+    background: #fffafb;
+    border-left: 2px solid var(--uk-danger);
+}
+
+.column-item.extra {
+    background: #fafffc;
+    border-left: 2px solid var(--uk-success);
+}
+
+.column-name {
+    font-weight: 500;
+    color: #333;
+    font-size: 12px;
+    min-width: 120px;
+}
+
+.column-item.missing .column-name {
+    color: var(--uk-danger);
+}
+
+.column-item.extra .column-name {
+    color: var(--uk-success);
+}
+
+.column-type {
+    font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+    color: #fff;
+    font-size: 11px;
+    background: #666;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.column-item.missing .column-type {
+    background: var(--uk-danger);
+    color: #fff;
+}
+
+.column-item.extra .column-type {
+    background: var(--uk-success);
+    color: #fff;
+}
+
+/* Database Column - No Scroll */
+.database-column {
+    /* Scrollbar kaldırıldı - içerik aşağı doğru uzar */
+}
+
+/* Loading & Error */
+#loading {
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    .column-header {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .schema-header-custom {
+        padding: 12px 14px;
+    }
+}

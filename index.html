@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PostgreSQL database schema comparison tool - Compare local and remote database structures">
+    <meta name="author" content="Database Compare">
+    <title>Database Comparison Tool | PostgreSQL</title>
+
+    <!-- UIKit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="uk-background-default">
+        <div class="uk-container uk-container-expand">
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+                <div class="uk-navbar-center">
+                    <div class="uk-navbar-item">
+                        <h1 class="uk-margin-remove">
+                            <span uk-icon="icon: database; ratio: 1.2" class="uk-margin-small-right"></span>
+                            Database Comparison
+                        </h1>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="uk-section uk-padding-remove-top" style="min-height: calc(100vh - 80px);">
+        <div class="uk-container uk-container-large uk-margin-top">
+            <!-- Loading State -->
+            <div id="loading" class="uk-text-center uk-margin-large-top uk-margin-large-bottom">
+                <div uk-spinner="ratio: 1.5"></div>
+                <p class="uk-margin-top">Veriler yükleniyor...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error" class="uk-alert-danger uk-margin" uk-alert style="display: none;">
+                <a class="uk-alert-close" uk-close></a>
+                <h3>Hata!</h3>
+                <p id="error-message">Bir hata oluştu</p>
+            </div>
+
+            <!-- Data Container -->
+            <div id="container" class="uk-grid-match uk-child-width-1-2@m" uk-grid style="display: none;">
+                <div>
+                    <div id="local-column" class="database-column"></div>
+                </div>
+                <div>
+                    <div id="remote-column" class="database-column"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- UIKit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

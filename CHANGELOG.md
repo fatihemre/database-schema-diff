@@ -7,8 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Multi-language support (i18n/localization)
+- Language switcher in UI (navbar)
+- English translations (default)
+- Turkish translations
+- Language API endpoint (`lang.php`)
+- Language preference saved to localStorage
+- Translation system for dynamic content
+
 ### Planned
 - MySQL/MariaDB database support
+- Additional language translations (community contributions welcome!)
 - Table index comparison
 - Foreign key comparison
 - Export comparison report (PDF/HTML)
@@ -69,5 +79,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[Unreleased]: https://github.com/yourusername/database-compare/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/yourusername/database-compare/releases/tag/v1.0.0
+[Unreleased]: https://github.com/fatihemre/database-schema-diff/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/fatihemre/database-schema-diff/releases/tag/v1.0.0

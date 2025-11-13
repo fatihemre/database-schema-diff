@@ -1,9 +1,17 @@
 /**
- * Database Comparison Script - UIKit Version
+ * Database Comparison Script - UIKit Version with Localization
  */
 
+// Current language and translations
+let currentLang = localStorage.getItem('lang') || 'en';
+let translations = {};
+
 document.addEventListener('DOMContentLoaded', function() {
-    loadData();
+    // Load translations first, then load data
+    loadTranslations(currentLang).then(() => {
+        loadData();
+        initLanguageSelector();
+    });
 });
 
 /**
@@ -24,7 +32,7 @@ async function loadData() {
         const result = await response.json();
 
         if (!result.success) {
-            throw new Error(result.error || 'Bir hata oluştu');
+            throw new Error(result.error || t('error_message'));
         }
 
         loadingEl.style.display = 'none';
@@ -51,8 +59,8 @@ function renderData(data) {
     const remoteHost = data.config.remote.host + ':' + data.config.remote.port;
 
     // Column headers
-    localColumn.innerHTML = `<h2 class="column-header"><span uk-icon="icon: laptop; ratio: 1.2"></span> Local Veritabanı <span class="hostname">(${escapeHtml(localHost)})</span></h2>`;
-    remoteColumn.innerHTML = `<h2 class="column-header"><span uk-icon="icon: server; ratio: 1.2"></span> Remote Veritabanı <span class="hostname">(${escapeHtml(remoteHost)})</span></h2>`;
+    localColumn.innerHTML = `<h2 class="column-header"><span uk-icon="icon: laptop; ratio: 1.2"></span> ${t('local_database')} <span class="hostname">(${escapeHtml(localHost)})</span></h2>`;
+    remoteColumn.innerHTML = `<h2 class="column-header"><span uk-icon="icon: server; ratio: 1.2"></span> ${t('remote_database')} <span class="hostname">(${escapeHtml(remoteHost)})</span></h2>`;
 
     // Local schemas
     renderSchemas(
@@ -96,7 +104,7 @@ function renderSchemas(container, schemas, compareSchemas, schemaStatuses, side)
         headerDiv.innerHTML = `
             <span class="schema-icon" uk-icon="icon: list"></span>
             <span class="schema-name">${escapeHtml(schemaName)}</span>
-            <span class="schema-count">${Object.keys(tables).length} tablo</span>
+            <span class="schema-count">${Object.keys(tables).length} ${t('tables')}</span>
             <span class="schema-status ${statusIconClass}" uk-icon="icon: ${isOk ? 'check' : 'close'}"></span>
         `;
 
@@ -258,4 +266,74 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+/**
+ * Load translations from API
+ */
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch(`lang.php?lang=${lang}`);
+        const result = await response.json();
+
+        if (result.success) {
+            translations = result.translations;
+            currentLang = result.lang;
+
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLang;
+
+            // Translate all elements with data-i18n attribute
+            translatePage();
+        }
+    } catch (error) {
+        console.error('Failed to load translations:', error);
+        // Fallback to English
+        translations = {};
+    }
+}
+
+/**
+ * Translate all elements on the page
+ */
+function translatePage() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[key]) {
+            element.textContent = translations[key];
+        }
+    });
+}
+
+/**
+ * Get translation by key
+ */
+function t(key) {
+    return translations[key] || key;
+}
+
+/**
+ * Initialize language selector
+ */
+function initLanguageSelector() {
+    const selector = document.getElementById('language-selector');
+
+    if (selector) {
+        // Set current language
+        selector.value = currentLang;
+
+        // Add change event listener
+        selector.addEventListener('change', async function() {
+            const newLang = this.value;
+
+            // Save to localStorage
+            localStorage.setItem('lang', newLang);
+
+            // Load new translations
+            await loadTranslations(newLang);
+
+            // Reload data to apply translations
+            loadData();
+        });
+    }
 }

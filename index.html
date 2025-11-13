@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PostgreSQL database schema comparison tool - Compare local and remote database structures">
     <meta name="author" content="Database Compare">
-    <title>Database Comparison Tool | PostgreSQL</title>
+    <title>Database Schema Comparison Tool</title>
 
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
@@ -22,8 +22,16 @@
                     <div class="uk-navbar-item">
                         <h1 class="uk-margin-remove">
                             <span uk-icon="icon: database; ratio: 1.2" class="uk-margin-small-right"></span>
-                            Database Comparison
+                            <span data-i18n="app_title">Database Schema Comparison</span>
                         </h1>
+                    </div>
+                </div>
+                <div class="uk-navbar-right">
+                    <div class="uk-navbar-item">
+                        <select id="language-selector" class="uk-select" style="width: auto;">
+                            <option value="en">English</option>
+                            <option value="tr">Türkçe</option>
+                        </select>
                     </div>
                 </div>
             </nav>
@@ -36,14 +44,14 @@
             <!-- Loading State -->
             <div id="loading" class="uk-text-center uk-margin-large-top uk-margin-large-bottom">
                 <div uk-spinner="ratio: 1.5"></div>
-                <p class="uk-margin-top">Veriler yükleniyor...</p>
+                <p class="uk-margin-top" data-i18n="loading">Loading database schemas...</p>
             </div>
 
             <!-- Error State -->
             <div id="error" class="uk-alert-danger uk-margin" uk-alert style="display: none;">
                 <a class="uk-alert-close" uk-close></a>
-                <h3>Hata!</h3>
-                <p id="error-message">Bir hata oluştu</p>
+                <h3 data-i18n="error">Error</h3>
+                <p id="error-message" data-i18n="error_message">An error occurred while loading the data.</p>
             </div>
 
             <!-- Data Container -->

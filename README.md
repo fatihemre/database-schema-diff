@@ -15,6 +15,7 @@ A modern, extensible web application for comparing database schemas between loca
 - 🎯 **Column Type Detection** - Displays column names and their precise data types
 - 🔄 **Synchronized Navigation** - Expand a schema on one side, and the same schema opens on the other side
 - 🌐 **Cross-Database Compare** - Compare PostgreSQL to MySQL, or any supported combination!
+- 🌍 **Multi-Language Support** - Available in English and Turkish (easily extensible to other languages)
 - 📱 **Responsive Design** - Works on desktop, tablet, and mobile devices
 - 🎨 **Modern UI** - Clean interface built with UIKit framework
 - ⚡ **Fast & Lightweight** - No heavy dependencies, just vanilla PHP and JavaScript
@@ -161,7 +162,11 @@ schema-diff/
 │   ├── init-remote.sql
 │   ├── config.docker.php
 │   └── README.md
+├── lang/                              # 🌍 Language files
+│   ├── en.php                         # English translations
+│   └── tr.php                         # Turkish translations
 ├── api.php                            # REST API endpoint
+├── lang.php                           # Language API endpoint
 ├── config.php                         # Database configuration (gitignored)
 ├── config.example.php                 # Example configuration
 ├── index.html                         # Main HTML file
@@ -200,6 +205,27 @@ Returns comparison data in JSON format.
       "local": { "host": "...", "port": "..." },
       "remote": { "host": "...", "port": "..." }
     }
+  }
+}
+```
+
+### GET `/lang.php?lang=en`
+
+Returns translations for the specified language.
+
+**Parameters:**
+- `lang` - Language code (e.g., `en`, `tr`)
+
+**Response:**
+```json
+{
+  "success": true,
+  "lang": "en",
+  "translations": {
+    "app_title": "Database Schema Comparison",
+    "local_database": "Local Database",
+    "remote_database": "Remote Database",
+    ...
   }
 }
 ```
@@ -269,6 +295,12 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 - [ ] MSSQL adapter
 - [ ] Oracle adapter
 - [ ] SQLite adapter
+
+### Localization
+- [x] Multi-language support infrastructure
+- [x] English (default)
+- [x] Turkish
+- [ ] Additional languages (community contributions welcome!)
 
 ### Comparison Features
 - [ ] Table index comparison
